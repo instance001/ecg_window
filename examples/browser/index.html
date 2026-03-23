@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ECG Window Browser Example</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at top, #1f2937, #020617 70%);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      #app {
+        width: min(92vw, 680px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import { startEcgWindowPolling } from "./ecg-window.js";
+
+      const samples = [8, 12, 18, 72, 61, 89, 44, 36, 77, 28, 14];
+      let index = 0;
+
+      startEcgWindowPolling({
+        container: document.getElementById("app"),
+        intervalMs: 1200,
+        width: 360,
+        height: 88,
+        fetchPayload: async () => {
+          index = (index + 1) % samples.length;
+          const current = samples[index];
+          const history = Array.from({ length: 18 }, (_, offset) => samples[(index + offset) % samples.length]);
+
+          return {
+            supported: true,
+            available: true,
+            label: "ECG Window - Browser Demo",
+            note: "ECG-style view of current workload activity.",
+            current_percent: current,
+            history,
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

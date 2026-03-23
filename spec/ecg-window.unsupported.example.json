@@ -1,0 +1,8 @@
+{
+  "supported": false,
+  "available": false,
+  "label": "ECG Window",
+  "note": "Telemetry is not available in this environment.",
+  "current_percent": 0,
+  "history": []
+}

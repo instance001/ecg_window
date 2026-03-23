@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECG Window Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "supported",
+    "available",
+    "label",
+    "note",
+    "current_percent",
+    "history"
+  ],
+  "properties": {
+    "supported": {
+      "type": "boolean",
+      "description": "Whether this environment and integration support ECG Window telemetry at all."
+    },
+    "available": {
+      "type": "boolean",
+      "description": "Whether a fresh usable telemetry sample is currently available."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-friendly title for the signal source."
+    },
+    "note": {
+      "type": "string",
+      "description": "Short explanation or fallback note for the current state."
+    },
+    "current_percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Latest known normalized activity sample."
+    },
+    "history": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 120,
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "description": "Recent normalized activity samples, ordered oldest to newest."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "supported": {
+            "const": false
+          }
+        },
+        "required": [
+          "supported"
+        ]
+      },
+      "then": {
+        "properties": {
+          "available": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
+}
