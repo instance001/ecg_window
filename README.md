@@ -31,6 +31,30 @@ To add an ECG Window to a project, you only need four parts:
 3. A tiny contract that exposes the current value plus recent history
 4. A small renderer that draws the ECG Window trace and current percentage
 
+## Implementation Flow Map
+
+```mermaid
+flowchart LR
+    workload["Long-running local workload<br/>generation, training, rendering, indexing"] --> signal["One honest activity signal<br/>GPU, CPU, queue, worker, heartbeat"]
+    signal --> normalize["Normalize + clamp<br/>0..100 percent"]
+    normalize --> buffer["Rolling history buffer<br/>40-60 recent samples"]
+    buffer --> payload["Tiny ECG payload<br/>supported, available, label, note,<br/>current_percent, history"]
+    payload --> deliver{"Integration shape"}
+
+    deliver --> same["Same-process state<br/>desktop / local tool"]
+    deliver --> endpoint["Local endpoint + polling UI<br/>backend/frontend split"]
+    deliver --> push["Push updates<br/>websocket, IPC, reactive store"]
+
+    same --> renderer["Passive renderer<br/>trace + percent + human label"]
+    endpoint --> renderer
+    push --> renderer
+
+    renderer --> user["User glance<br/>flat = idle, spikes = work,<br/>unavailable = fail gently"]
+
+    missing["Telemetry missing"] -.-> unavailable["supported/available state<br/>hide or show calm unavailable"]
+    unavailable -.-> renderer
+```
+
 ## Start Here
 
 If you only read three things:
