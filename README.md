@@ -93,7 +93,7 @@ See [`examples/README.md`](examples/README.md) for the quick chooser.
 {
   "supported": true,
   "available": true,
-  "label": "ECG Window - AMD Radeon RX 9060 XT",
+  "label": "ECG Window - Local compute activity",
   "note": "ECG-style view of the busiest local compute signal.",
   "current_percent": 73.0,
   "history": [12.0, 31.0, 78.0, 64.0, 81.0]
