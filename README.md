@@ -10,6 +10,10 @@ The ECG Window is meant to feel like a medical monitor:
 
 Its job is not deep telemetry. Its job is reassurance.
 
+Terminology boundary: `alive`, `heartbeat`, and ECG language are user-facing
+metaphors for truthful workload activity and fresh telemetry. They do not imply
+biological life, cognition, self-awareness, or medical-grade monitoring.
+
 ![ECG Window in action](assets/ecg-window-live-screenshot.png)
 
 ## Why This Repo Exists

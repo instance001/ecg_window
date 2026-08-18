@@ -22,6 +22,10 @@ It is designed to answer a simple human question:
 
 > Is the machine alive and doing something right now?
 
+Here, "alive" is plain user-facing shorthand for "the workload is active and
+fresh telemetry is visible." It is not a claim about biological life, cognition,
+self-awareness, or medical monitoring.
+
 Instead of showing raw logs or complex hardware panels, it shows:
 
 - a moving ECG-style graph

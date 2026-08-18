@@ -4,7 +4,7 @@ Because people hate not knowing whether a tool is working or stuck.
 
 That is the whole reason.
 
-The ECG Window gives users a small, honest sign of life while a process runs. It does not need to explain every system detail. It just needs to make the state of the machine feel visible.
+The ECG Window gives users a small, honest sign of life while a process runs. In this repo, "sign of life" means visible workload activity from a truthful signal, not biological life, cognition, or medical monitoring. It does not need to explain every system detail. It just needs to make the state of the machine feel visible.
 
 ## It Stops The "Is It Stalled?" Spiral
 
