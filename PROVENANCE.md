@@ -32,3 +32,9 @@ GitHub API licence field at inventory time: `AGPL-3.0`. This is a metadata obser
 ## Evidence and limitations
 
 Evidence: authenticated GitHub API metadata captured by the FMI provenance audit. Contribution, prior art, ownership, contributors, document licensing, relationships, releases, and publication status require human verification.
+
+## Evidence-led lineage position
+
+The README and `docs/architecture.md` support an `IMPLEMENTED` language-agnostic activity-visibility pattern: one honest normalised activity signal, a short rolling history, a small payload/contract, and a passive renderer that distinguishes supported/available status from actual work indication. It is designed for incorporation into local workloads such as generation, training, rendering, or indexing.
+
+“ECG,” “heartbeat,” and “alive” are explicitly user-interface metaphors, not biological, medical, cognition, or medical-device claims. The implementation does not claim ownership of monitoring, telemetry, polling, progress indicators, graphs, or system metrics generally.
